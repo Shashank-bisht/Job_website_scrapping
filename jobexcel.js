@@ -18,13 +18,15 @@ const scrapeData = async () => {
 
                 return Array.from(items).map(item => {
                     const h3Element = item.querySelector('.heading_4_5.profile a');
+                    const locationElement = item.querySelector('.location_link');
                     const salaryElement = item.querySelector('.other_detail_item_row .other_detail_item:nth-child(2) .item_body');
 
                     const h3Text = h3Element ? h3Element.innerText : 'N/A';
                     const h3Link = h3Element ? h3Element.getAttribute('href') : 'N/A';
+                    const location = locationElement ? locationElement.innerText.trim() : 'N/A';
                     const salary = salaryElement ? salaryElement.innerText : 'N/A';
 
-                    return { h3Text, h3Link: `https://internshala.com${h3Link}`, salary };
+                    return { h3Text, h3Link: `https://internshala.com${h3Link}`,location, salary };
                 });
             });
 
@@ -41,18 +43,18 @@ const scrapeData = async () => {
 
 const writeToExcel = async (data) => {
     const workbook = new ExcelJS.Workbook();
-    const worksheet = workbook.addWorksheet('Fresher Jobs');
+    const worksheet = workbook.addWorksheet('New Jobs');
 
     // Add headers to the worksheet
-    worksheet.addRow(['Job Title', 'Job Link', 'Salary']);
+    worksheet.addRow(['Job Title', 'Job Link','location', 'Salary']);
 
     // Add data to the worksheet
     data.forEach(job => {
-        worksheet.addRow([job.h3Text, job.h3Link, job.salary]);
+        worksheet.addRow([job.h3Text, job.h3Link,job.location, job.salary]);
     });
 
     // Save the workbook to a file
-    await workbook.xlsx.writeFile('fresher_jobs.xlsx');
+    await workbook.xlsx.writeFile('New_jobs.xlsx');
     console.log('Excel file created successfully');
 };
 

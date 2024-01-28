@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
 const ExcelJS = require('exceljs');
+
 const scrapeData = async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -17,15 +18,17 @@ const scrapeData = async () => {
 
                 return Array.from(items).map(item => {
                     const h3Element = item.querySelector('.heading_4_5.profile a');
+                    const locationElement = item.querySelector('.location_link');
                     const stipendElement = item.querySelector('.stipend_container .stipend');
                     const durationElement = item.querySelector('.other_detail_item_row .other_detail_item:nth-child(2) .item_body');
 
                     const h3Text = h3Element ? h3Element.innerText : 'N/A';
                     const h3Link = h3Element ? h3Element.getAttribute('href') : 'N/A';
+                    const location = locationElement ? locationElement.innerText.trim() : 'N/A';
                     const stipend = stipendElement ? stipendElement.innerText : 'N/A';
                     const duration = durationElement ? durationElement.innerText : 'N/A';
 
-                    return { h3Text, h3Link: `https://internshala.com${h3Link}`, stipend, duration };
+                    return { h3Text, h3Link: `https://internshala.com${h3Link}`, location, stipend, duration };
                 });
             });
 
@@ -48,18 +51,18 @@ const scrapeData = async () => {
 
 const writeToExcel = async (data) => {
   const workbook = new ExcelJS.Workbook();
-  const worksheet = workbook.addWorksheet('Internships');
+  const worksheet = workbook.addWorksheet('Internship');
 
   // Add headers to the worksheet
-  worksheet.addRow(['Title', ' Link', 'Stipend', 'Duration']);
+  worksheet.addRow(['Title', ' Link', 'Location', 'Stipend', 'Duration']);
 
   // Add data to the worksheet
   data.forEach(job => {
-      worksheet.addRow([job.h3Text, job.h3Link, job.stipend, job.duration]);
+      worksheet.addRow([job.h3Text, job.h3Link, job.location, job.stipend, job.duration]);
   });
 
   // Save the workbook to a file
-  await workbook.xlsx.writeFile('Internships.xlsx');
+  await workbook.xlsx.writeFile('Internship.xlsx');
   console.log('Excel file created successfully');
 };
 

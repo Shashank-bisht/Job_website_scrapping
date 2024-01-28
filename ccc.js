@@ -23,10 +23,9 @@ const scrapePages = async () => {
       const dataArray = [];
 
       h3Elements.forEach((h3Element) => {
-        console.log(h3Element)
         const h3Text = h3Element.innerText.trim();
         const anchorElement = h3Element.querySelector('a.view_detail_button');
-       
+         
         const href = anchorElement ? anchorElement.getAttribute('href') : null;
 
         const dataObject = {
