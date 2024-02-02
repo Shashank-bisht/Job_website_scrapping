@@ -1,4 +1,4 @@
 # Contribute to this project 
 
 # Run 
-### `node index.js`
+### `node file_name`
