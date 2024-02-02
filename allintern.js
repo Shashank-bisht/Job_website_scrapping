@@ -1,3 +1,7 @@
+
+
+
+
 const puppeteer = require('puppeteer');
 const ExcelJS = require('exceljs');
 
@@ -8,8 +12,8 @@ const scrapeData = async () => {
     const data = [];
 
     try {
-        for (let pageIdx = 1; pageIdx <= 30; pageIdx++) {
-            const url = `https://internshala.com/fresher-jobs/jobs-in-delhi/page-${pageIdx}/`;
+        for (let pageIdx = 1; pageIdx <= 50; pageIdx++) {
+            const url = `https://internshala.com/internships/internship-in-delhi/stipend-8000/page-${pageIdx}/`;
 
             await page.goto(url, { waitUntil: 'domcontentloaded' });
 
@@ -19,16 +23,26 @@ const scrapeData = async () => {
                 return Array.from(items).map(item => {
                     const h3Element = item.querySelector('.heading_4_5.profile a');
                     const locationElement = item.querySelector('.location_link');
-                    const salaryElement = item.querySelector('.other_detail_item_row .other_detail_item:nth-child(2) .item_body');
+                    const stipendElement = item.querySelector('.stipend_container .stipend');
+                    const durationElement = item.querySelector('.other_detail_item_row .other_detail_item:nth-child(2) .item_body');
                     const timeElement = item.querySelector('.success_and_early_applicant_wrapper .status-small');
+
                     const h3Text = h3Element ? h3Element.innerText : 'N/A';
                     const h3Link = h3Element ? h3Element.getAttribute('href') : 'N/A';
                     const location = locationElement ? locationElement.innerText.trim() : 'N/A';
-                    const salary = salaryElement ? salaryElement.innerText : 'N/A';
+                    const stipend = stipendElement ? stipendElement.innerText : 'N/A';
+                    const duration = durationElement ? durationElement.innerText : 'N/A';
                     const time = timeElement ? timeElement.innerText : 'N/A';
-                    return { h3Text, h3Link: `https://internshala.com${h3Link}`,location, salary ,time };
+
+                    return { h3Text, h3Link: `https://internshala.com${h3Link}`, location, stipend, duration, time };
                 });
             });
+
+            // Check if all entries on the page are 'N/A' and break out of the loop
+            if (newData.every(entry => entry.h3Text === 'N/A' && entry.stipend === 'N/A' && entry.duration === 'N/A')) {
+                console.log(`All entries on page ${pageIdx} are 'N/A'. Stopping iteration.`);
+                break;
+            }
 
             data.push(...newData);
         }
@@ -43,18 +57,18 @@ const scrapeData = async () => {
 
 const writeToExcel = async (data) => {
     const workbook = new ExcelJS.Workbook();
-    const worksheet = workbook.addWorksheet('New Jobs');
+    const worksheet = workbook.addWorksheet('allInternship');
 
     // Add headers to the worksheet
-    worksheet.addRow(['Job Title', 'Job Link','location', 'Salary', 'Posted Time']);
+    worksheet.addRow(['Title', ' Link', 'Location', 'Stipend', 'Duration', 'Posted Time']);
 
     // Add data to the worksheet
     data.forEach(job => {
-        worksheet.addRow([job.h3Text, job.h3Link,job.location, job.salary, job.time]);
+        worksheet.addRow([job.h3Text, job.h3Link, job.location, job.stipend, job.duration, job.time]);
     });
 
     // Save the workbook to a file
-    await workbook.xlsx.writeFile('New_jobs.xlsx');
+    await workbook.xlsx.writeFile('allInternship.xlsx');
     console.log('Excel file created successfully');
 };
 
