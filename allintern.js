@@ -12,7 +12,7 @@ const scrapeData = async () => {
     const data = [];
 
     try {
-        for (let pageIdx = 1; pageIdx <= 50; pageIdx++) {
+        for (let pageIdx = 1; pageIdx <= 80; pageIdx++) {
             const url = `https://internshala.com/internships/internship-in-delhi/stipend-8000/page-${pageIdx}/`;
 
             await page.goto(url, { waitUntil: 'domcontentloaded' });

@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "exceljs": "^4.4.0",
-    "puppeteer": "^21.7.0"
+    "puppeteer": "^21.11.0"
   }
 }

@@ -13,7 +13,7 @@ const scrapeData = async () => {
         // place the your desired url here with filters
       const url = `https://internshala.com/internships/computer-science,full-stack-development,mean-mern-stack,python-django,web-development-internship-in-delhi,gurgaon,noida/page-${pageIdx}/`;
 
-      await page.goto(url, { waitUntil: "domcontentloaded" });
+    await page.goto(url, { waitUntil: "domcontentloaded" });
 
       const newData = await page.evaluate(() => {
         const items = document.querySelectorAll(

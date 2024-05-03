@@ -8,7 +8,7 @@ const scrapeData = async () => {
     const data = [];
 
     try {
-        for (let pageIdx = 1; pageIdx <= 30; pageIdx++) {
+        for (let pageIdx = 1; pageIdx <= 35; pageIdx++) {
             const url = `https://internshala.com/fresher-jobs/jobs-in-delhi/page-${pageIdx}/`;
 
             await page.goto(url, { waitUntil: 'domcontentloaded' });
@@ -50,16 +50,7 @@ const writeToExcel = async (data) => {
 
     // Add data to the worksheet
     data.forEach(job => {
-        const row = worksheet.addRow([job.h3Text, 'Click here', job.location, job.salary, job.time]);
-
-        // Get the cell corresponding to the Job Link
-        const jobLinkCell = row.getCell(2);
-
-        // Add hyperlink to the cell
-        jobLinkCell.value = { text: 'Click here', hyperlink: job.h3Link };
-
-        // Apply hyperlink style
-        jobLinkCell.font = { color: { argb: 'FF0000FF' }, underline: true };
+ worksheet.addRow([job.h3Text, job.h3Link, job.location, job.salary, job.time]);
     });
 
     // Save the workbook to a file
