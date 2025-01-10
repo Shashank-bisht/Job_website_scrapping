@@ -15,7 +15,7 @@ const fs = require('fs');
   try {
     const jobDetailsArray = []; // Initialize an array to store all job details
 
-    for (let pageIdx = 1; pageIdx <= 1; pageIdx++) {
+    for (let pageIdx = 1; pageIdx <= 3; pageIdx++) {
       const url = `https://www.naukri.com/jobs-in-india-${pageIdx}?k=jobs&qproductJobSource=2&naukriCampus=true&experience=0&nignbevent_src=jobsearchDeskGNB`;
 
       await page.goto(url, { waitUntil: 'domcontentloaded' });
@@ -52,7 +52,7 @@ const fs = require('fs');
     console.log('All job details:', jobDetailsArray);
 
     // Write job details to JSON file
-    fs.writeFileSync('jobDetails.json', JSON.stringify(jobDetailsArray, null, 2));
+    fs.writeFileSync('naukari_jobs.json', JSON.stringify(jobDetailsArray, null, 2));
 
     console.log('Job details saved to jobDetails.json');
 

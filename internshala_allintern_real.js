@@ -1,9 +1,5 @@
-
-
-
-
 const puppeteer = require('puppeteer');
-const ExcelJS = require('exceljs');
+const fs = require('fs');  // Import fs to write to files
 
 const scrapeData = async () => {
     const browser = await puppeteer.launch();
@@ -12,8 +8,8 @@ const scrapeData = async () => {
     const data = [];
 
     try {
-        for (let pageIdx = 1; pageIdx <= 80; pageIdx++) {
-            const url = `https://internshala.com/internships/internship-in-delhi/stipend-8000/page-${pageIdx}/`;
+        for (let pageIdx = 1; pageIdx <= 2; pageIdx++) {
+            const url = `https://internshala.com/internships/stipend-4000/page-${pageIdx}/`;
 
             await page.goto(url, { waitUntil: 'domcontentloaded' });
 
@@ -21,11 +17,11 @@ const scrapeData = async () => {
                 const items = document.querySelectorAll('.container-fluid.individual_internship');
 
                 return Array.from(items).map(item => {
-                    const h3Element = item.querySelector('.heading_4_5.profile a');
-                    const locationElement = item.querySelector('.location_link');
-                    const stipendElement = item.querySelector('.stipend_container .stipend');
-                    const durationElement = item.querySelector('.other_detail_item_row .other_detail_item:nth-child(2) .item_body');
-                    const timeElement = item.querySelector('.success_and_early_applicant_wrapper .status-small');
+                    const h3Element = item.querySelector('.job-internship-name a');
+                    const locationElement = item.querySelector('.locations a');
+                    const stipendElement = item.querySelector('.stipend');
+                    const durationElement = item.querySelector('.row-1-item span');
+                    const timeElement = item.querySelector('.status-success span');
 
                     const h3Text = h3Element ? h3Element.innerText : 'N/A';
                     const h3Link = h3Element ? h3Element.getAttribute('href') : 'N/A';
@@ -55,28 +51,17 @@ const scrapeData = async () => {
     return data;
 };
 
-const writeToExcel = async (data) => {
-    const workbook = new ExcelJS.Workbook();
-    const worksheet = workbook.addWorksheet('allInternship');
-
-    // Add headers to the worksheet
-    worksheet.addRow(['Title', ' Link', 'Location', 'Stipend', 'Duration', 'Posted Time']);
-
-    // Add data to the worksheet
-    data.forEach(job => {
-        worksheet.addRow([job.h3Text, job.h3Link, job.location, job.stipend, job.duration, job.time]);
-    });
-
-    // Save the workbook to a file
-    await workbook.xlsx.writeFile('allInternship.xlsx');
-    console.log('Excel file created successfully');
+const writeToJSON = (data) => {
+    // Convert the data array to JSON format and write it to a file
+    fs.writeFileSync('internshala_intern_data.json', JSON.stringify(data, null, 2), 'utf-8');
+    console.log('JSON file created successfully');
 };
 
 // Main execution
 (async () => {
     try {
         const data = await scrapeData();
-        await writeToExcel(data);
+        writeToJSON(data);  // Write data to a JSON file
     } catch (error) {
         console.error('Error:', error);
     }
