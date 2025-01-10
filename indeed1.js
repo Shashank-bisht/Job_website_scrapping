@@ -13,8 +13,8 @@ const puppeteer = require('puppeteer');
     const jobDetailsArray = []; // Initialize an array to store all job details
 
     // Set the range of page numbers you want to scrape
-    const startPage = 0;
-    const endPage = 2; // Scraping first 3 pages, adjust as needed
+    const startPage = 5;
+    const endPage = 6; // Scraping first 3 pages, adjust as needed
 
     for (let pageIdx = startPage; pageIdx < endPage; pageIdx++) {
       const url = `https://in.indeed.com/jobs?q=Jobs&start=${pageIdx * 10}`; // Generate URL for each page
