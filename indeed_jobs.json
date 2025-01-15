@@ -1,137 +1,130 @@
 [
   {
-    "title": "Flight Attendance",
-    "company": "Shine Airways",
+    "title": "Data Entry",
+    "company": "Vianet Media Pvt Ltd.",
+    "experience": "N/A",
+    "salary": "₹12,000 - ₹14,000 a month",
+    "location": "Shahdara, Delhi, Delhi",
+    "posted": "EmployerActive 3 days ago",
+    "link": "https://in.indeed.com/rc/clk?jk=3421be3380db7ffd&bb=eWdPcGQAsRXtuFWxtvikM48mXMNfCtkdJGUOYPQvVJ87mzcXTkD69w-wDy0LFvHspP7hKr3jtROaQF50aDiVeZamQhHUIv6G3Vqqz77FzXVaW33-00jZ1CKYL4TWdGWl&xkcb=SoBf67M33zvg7RxYYp0LbzkdCdPP&fccid=ca944dcc56ea4b17&cmp=Vianet-Media-Ltd&ti=Data+Entry+Clerk&vjs=3"
+  },
+  {
+    "title": "Office Assistant",
+    "company": "International Union for Conservation of Nature",
+    "experience": "N/A",
+    "salary": "₹326 a day",
+    "location": "Delhi, Delhi",
+    "link": "https://in.indeed.com/rc/clk?jk=cdf17859e5968653&bb=eWdPcGQAsRXtuFWxtvikM0WbfWFQ-DzVZLg7q6g71xSkPfXJuE1YQ8wxRHmktx-C1IEmIOaws7kI_MFNF3NyXl-n42xQCKlYbO2DYOXESNXaahHMUHSnceIgEh4U52Ff&xkcb=SoDr67M33zvg7RxYYp0KbzkdCdPP&fccid=c6dab415dd8515a7&vjs=3"
+  },
+  {
+    "title": "Service / Customer Coordinator",
+    "company": "Reynold India Pvt Ltd",
+    "experience": "N/A",
+    "salary": "₹25,000 - ₹37,000 a month",
     "location": "Noida, Uttar Pradesh",
+    "posted": "EmployerActive 7 days ago",
+    "link": "https://in.indeed.com/rc/clk?jk=bc11cf67345e5849&bb=eWdPcGQAsRXtuFWxtvikM3CazYTJ_S8AZSE0oxYkqBamEzcUMJkFNsf_1Yj9K3rbOxXPFcavlFUDIbEDsoDEtZbsMtzSFecsUKpvCFkjwKIVT6kLwbzyFhTqCUfhKmag&xkcb=SoB267M33zvg7RxYYp0JbzkdCdPP&fccid=bbb08c7f48bdbdb6&cmp=Reynold-India&ti=Customer+Service+Coordinator&vjs=3"
+  },
+  {
+    "title": "DATA ENTRY COMPUTER OPERATOR",
+    "company": "BACKENDMD",
+    "experience": "N/A",
     "salary": "N/A",
-    "experience": "N/A",
-    "postedDate": "N/A",
-    "link": "https://in.indeed.com/rc/clk?jk=491114178aa4fb67&bb=nr_D4oTjwqCHJrhI7kHE2fEUOArvGmfEfe40qJneWkdZcTvlFwAjo8J84FmWDx548mQSid_gg-rTQ3Q1j3_UgE6-L9OkiUJY-U2tQBzDdExXItomJ0i3s3Dy4nhDEPl8&xkcb=SoD467M33o3Y8wgMAL0LbzkdCdPP&fccid=9a54f76b74e43a7f&vjs=3"
-  },
-  {
-    "title": "Upper Division Clerk",
-    "company": "Om Security and Cleaning Services",
-    "location": "Noida Sector 62, Noida, Uttar Pradesh",
-    "salary": "N/A",
-    "experience": "N/A",
-    "postedDate": "EmployerActive 6 days ago",
-    "link": "https://in.indeed.com/rc/clk?jk=78677264d6b0552f&bb=nr_D4oTjwqCHJrhI7kHE2ZsFhUxmkRlUyTrzxnOdkaZXJX2DkfDyQhginmqJl0iW74TPtcuIODAjahjUkupGP87zEFE1Dehf9U9g49XEN0YDw40Ok38nGLr_wtoU61FI&xkcb=SoBM67M33o3Y8wgMAL0KbzkdCdPP&fccid=7c8fe7ea2eb67239&cmp=Om-Security-and-Cleaning-Services&ti=Upper+Division+Clerk&vjs=3"
-  },
-  {
-    "title": "Hindi English Translator",
-    "company": "Sunshine Manpower Solution And Services",
-    "location": "Remote in Udaipur, Rajasthan",
-    "salary": "N/A",
-    "experience": "N/A",
-    "postedDate": "N/A",
-    "link": "https://in.indeed.com/rc/clk?jk=511e25e5e026e88d&bb=nr_D4oTjwqCHJrhI7kHE2cOvFuVdb07zTwxtycC1czVWKeO5JrFH5P8nKJa1Z2h__9uSorsF86CR3_UA86CYk9UlYdnjUmjt5HTElidcMopJ1zRFepk6K4neE5qvswey&xkcb=SoDR67M33o3Y8wgMAL0JbzkdCdPP&fccid=050e6e9c784d0a85&vjs=3"
-  },
-  {
-    "title": "Fresher/Data Entry",
-    "company": "GLOBOSE TECHNOLOGY SOLUTIONS PRIVATE LIMITED",
-    "location": "Bhiwadi, Rajasthan",
-    "salary": "₹7,000 - ₹15,000 a month",
-    "experience": "N/A",
-    "postedDate": "EmployerActive 5 days ago",
-    "link": "https://in.indeed.com/rc/clk?jk=de560819dd70b2de&bb=nr_D4oTjwqCHJrhI7kHE2aAyZqKHXHAD7vBHqWULvtDuCHQAlytpW5pgQdzygSzb2o0zTDbNMoT5Qr-uX5ci4MhANsZXMER7ydxeXqKOMsr9skpw5AmpHdwLQ6qE6whM&xkcb=SoBl67M33o3Y8wgMAL0IbzkdCdPP&fccid=88333fe60918b537&cmp=Globose-Technology-Solutions&ti=Data+Entry+Clerk&vjs=3"
-  },
-  {
-    "title": "Assistant Supervisor",
-    "company": "DRIZZLE WORLD",
-    "location": "Agra, Uttar Pradesh",
-    "salary": "N/A",
-    "experience": "N/A",
-    "postedDate": "EmployerActive 9 days ago",
-    "link": "https://in.indeed.com/rc/clk?jk=55c6d46189191279&bb=nr_D4oTjwqCHJrhI7kHE2fH6JDJYIr3DF3HvE9ojVqnv1V1QZEZnvNT7uIspQnp1YD8U_fYhXk-6TkKahKTgvr1KpWGOS6CJWWZ6fPLWluLbS4tqbuqYbzNdS0cohtQU&xkcb=SoDr67M33o3Y8wgMAL0PbzkdCdPP&fccid=ec35ccb159249f64&cmp=DRIZZLE-WORLD&ti=Assistant+Supervisor&vjs=3"
-  },
-  {
-    "title": "Recruitment Intern - Remote",
-    "company": "Sprinto",
     "location": "Remote",
+    "posted": "EmployerActive 27 days ago",
+    "link": "https://in.indeed.com/rc/clk?jk=f7c20f6645dbcb5f&bb=eWdPcGQAsRXtuFWxtvikM2uX5QSNmcHavQ6yyh18xjUgXAMjire5lU03YP322UnmdKpbcHOEyLt6ngAmcZDPYTkZnrFz3Seu1O474Raix6ZjCuwopPggck61TkIOM5Jz&xkcb=SoDC67M33zvg7RxYYp0IbzkdCdPP&fccid=f5e7c42bcd5b4f47&cmp=Backend&ti=Data+Entry+Clerk&vjs=3"
+  },
+  {
+    "title": "IT Architect,Banking & Insurance,Platinion",
+    "company": "Boston Consulting Group",
+    "experience": "N/A",
     "salary": "N/A",
-    "experience": "N/A",
-    "postedDate": "N/A",
-    "link": "https://in.indeed.com/rc/clk?jk=d9a50573f35f6d35&bb=nr_D4oTjwqCHJrhI7kHE2aokwSJkn-uaCzfPgXlQbeWj-VRgMADbmraBVaYYRTd_nQ1k7m94fuJNqKMJ98DekgSQH4L8GToDUCuevma2F7FX3z8lAiWPOMp6gRhpIS_k&xkcb=SoBf67M33o3Y8wgMAL0ObzkdCdPP&fccid=65043f8e4578bad7&vjs=3"
-  },
-  {
-    "title": "Assistant Stores",
-    "company": "Bright Career Enterprises",
-    "location": "Bhiwadi, Rajasthan",
-    "salary": "Up to ₹25,000 a month",
-    "experience": "N/A",
-    "postedDate": "N/A",
-    "link": "https://in.indeed.com/rc/clk?jk=fcc5cb4fe7f3731c&bb=nr_D4oTjwqCHJrhI7kHE2WRB4CfP7FS93l7PKyLxqgRyPF_wEfJBsmFCxtDLiHoPrDrlSe6NJI95qSNBlL-Rn7Pk5Dy5sayo7rsuHff7RU9dYwDPSVArPUP8F95loVWx&xkcb=SoDC67M33o3Y8wgMAL0NbzkdCdPP&fccid=84c3c89abc7925f3&cmp=Bright-Career-Enterprises&ti=Retail+Sales+Associate&vjs=3"
-  },
-  {
-    "title": "Operations Executive",
-    "company": "Techchef Consulting India PVT. LTD.",
-    "location": "Nehru Place, Delhi, Delhi",
-    "salary": "N/A",
-    "experience": "N/A",
-    "postedDate": "EmployerActive 5 days ago",
-    "link": "https://in.indeed.com/rc/clk?jk=02410c2da0aefee4&bb=nr_D4oTjwqCHJrhI7kHE2fdx7cYkaeNex8N3iKfcfK9QwWTUNDQgKrZcnJDVmK3L7vxtOmWrAeKl19c9A9lI2WvV1rB6bpuqA5qB-wWN7TQnn8_-zHfbUb3RQd0J7Eir&xkcb=SoB267M33o3Y8wgMAL0MbzkdCdPP&fccid=2b18208899f16544&cmp=Techchef-Consulting-India-PVT.-LTD.&ti=Operations+Administrator&vjs=3"
-  },
-  {
-    "title": "GM AGM Works",
-    "company": "PaltechTM Cooling Towers Equipments",
-    "location": "Nuh, Haryana",
-    "salary": "₹10,00,000 - ₹12,00,000 a year",
-    "experience": "N/A",
-    "postedDate": "N/A",
-    "link": "https://in.indeed.com/rc/clk?jk=e2cc5154a3c659a6&bb=nr_D4oTjwqCHJrhI7kHE2SemCjHFefGlXoSg7_3vZ_-fAneGOxV1WaNbYJbcO-p-UhtA_umrhNDeevB47Wf9tseusJpcu85hFgGLpjSRyvgLUxBf5nL6TRfy3GwKlErA&xkcb=SoCf67M33o3Y8wgMAL0DbzkdCdPP&fccid=92b79535184daa9b&vjs=3"
-  },
-  {
-    "title": "Assistant Supervisor",
-    "company": "Digital Entrepreneurs",
-    "location": "Gorakhpur, Uttar Pradesh",
-    "salary": "N/A",
-    "experience": "N/A",
-    "postedDate": "EmployerActive 23 days ago",
-    "link": "https://in.indeed.com/rc/clk?jk=d80f06a602b6e17c&bb=nr_D4oTjwqCHJrhI7kHE2f-SKC8CLI2bWQ3zNGV_z6nUsqqQkf4UcNV2pHWqLHgQz5YYMV2ITHLJ5KDxrrE_WH3tm11GS7cy-LOmQBrJ7V-NAV6BfH-iXRdFDS5ikHlu&xkcb=SoAr67M33o3Y8wgMAL0CbzkdCdPP&fccid=4658efec97298274&cmp=Digital-Entrepreneurs&ti=Assistant+Supervisor&vjs=3"
-  },
-  {
-    "title": "Sales Coordinator",
-    "company": "Catalysts Bio-Technologies Pvt. Ltd.",
-    "location": "Patparganj, Delhi, Delhi",
-    "salary": "₹25,000 - ₹30,000 a month",
-    "experience": "N/A",
-    "postedDate": "N/A",
-    "link": "https://in.indeed.com/rc/clk?jk=559cf6cc0f552b1a&bb=nr_D4oTjwqCHJrhI7kHE2RhGOJ_AKQoGcLHY0Y1NYwzE_NaF7RTQ6rGxhkXR7YRvoFn6x39la321Zla4Xy6gYh-uKoH2OnL4r2Gk0vuDXYoEQZEFQfovy4rle79wdCIQ&xkcb=SoC267M33o3Y8wgMAL0BbzkdCdPP&fccid=49697b9f9fd27ab7&cmp=Catalysts-Bio--Technologies-Pvt.-Ltd.&ti=Sales+Coordinator&vjs=3"
-  },
-  {
-    "title": "Event Conceptualizer",
-    "company": "Shobiz",
-    "location": "Okhla, Delhi, Delhi",
-    "salary": "From ₹40,000 a month",
-    "experience": "N/A",
-    "postedDate": "N/A",
-    "link": "https://in.indeed.com/rc/clk?jk=0a8176404960e1da&bb=nr_D4oTjwqCHJrhI7kHE2WUhmBR1dpqzexHUIlzxbBp35hjC8wfFHI-eacFwjjnsD4OkFyFekDLr-TJISt72JE-ReaOGDJI-0sFGrssfhaFSx-K6FO0LPbAyU4gggt8l&xkcb=SoAC67M33o3Y8wgMAL0AbzkdCdPP&fccid=f80bb9f534e4e49d&cmp=Shobiz&ti=Event+Conceptualizer&vjs=3"
-  },
-  {
-    "title": "Office Coordinator",
-    "company": "DAIRY CRAFT INDIA PRIVATE LIMITED",
     "location": "Gurugram, Haryana",
-    "salary": "₹2,50,000 - ₹3,50,000 a year",
-    "experience": "N/A",
-    "postedDate": "EmployerActive 7 days ago",
-    "link": "https://in.indeed.com/rc/clk?jk=38adbdf959a50800&bb=nr_D4oTjwqCHJrhI7kHE2dmoaNcCEFHhl4mP_6osJfTxeEpWZ7dAndDraEc1oujn_yxc_Cdi1xwuVRWtn5LxlC9SaSymbMmNSnwuFTlOUDqM9XkeQqiM7A55a8awLG9B&xkcb=SoCM67M33o3Y8wgMAL0HbzkdCdPP&fccid=2b3578be1c413c01&cmp=DAIRY-CRAFT-INDIA-PRIVATE-LIMITED&ti=Office+Coordinator&vjs=3"
+    "link": "https://in.indeed.com/pagead/clk?mo=r&ad=-6NYlbfkN0Ad1FFWZOsBBwBZDGouyCcICeLSd3pQct3wJ1q5dPO7JJpl63UeygzaVIf5y4QrrwsDnqTuwSKExlyo8Tam6PY8TUbZqLYLxu62MBZiUWLqTGiABsD_OilsdORnF0ZRQe3-xyU1RGhe4CiS4hJu9Jn8pyOI5hiKR30H3enMNoayNQGqS4bnYPoOfd0jQDYiDnrUhFk8uPhLe7RtAWenHBpzUfsoiA1SOe074rpom3koC7A5Mt-Ke0nr4u4C7qVtPoJe1g1p98UdTSC3vBV6J-RmUIwY9FnVqx_kAksxStV66-0PQJYgZCEgvMQGVCrzbUngNKE4Me0Pivh00goXoVfMBJfvRft4fk4UgVTRRFbL3O1OKLOEA35cODYnKBrIxNS8XTx1th-2nCFkUbBi23JUHWVez41mFBC9uDxDhmVhbLUJrhd4yGaE_cFcjg1QznQUtF9KbDev3hBtt_FOVUvHYoZJRoayUHVVReNob57-NC7o7N8yIUu2k6J_AqUJT8lUDFrRB2yXS2tOvAsBnyhKezGRfx5uaPOTtN5VAi2kDI8KZ0cpwF-SZ5yy6EiZGNNo4fmYHST6QIcoYG33fqVmvQnZU5NMbHtZreQZ94z2FuMT6HmlKR8016RPhfudBmiG1dytqy8QL44bP8GsOOIfxEz6RtKFWw_UDFlaJiQ8PPVeO0a4LewTKLXj9VIs3I1XLQXWkaIJs9jtO_jxWEn4LRUS54k8isE1cdCItPcdMAr7h9p_7W7KmIn7YZ049aOJBs9secnX2asFIZobIsKEr8Cz7FD3oXVija306UpD7201j9eoFH8B-xV0KHgW8UTF_luIBO4Iwqy4alzBRl3v7zoKsrRT_ueeTd4ZVCKuzbmE-J7CZ5LqRhXQyX-iApI7kreQJFc-m-3BZiiXBSA-4zzWwlfXKAWhSDKz60QVyeR-JPxWnKUpTEJHWta7xvCoXB1aPOwWdtZHDUww9J8JHXaVcSN5hP_oqp27dZhaNBfLhF1h028PdHp-x9jAZWsKPailvtCTcBWperP4L3RUZ2p5hZVry8QUC3hk5avTIpbXpTRLihr_195Xs64QwejqhgQH9hDfBXk3B4j7MXph0cGkcEhaaQgTAIdE6Q7_Y2rgsIpEQyfCypgMMlD2oiwYKnBulBdSa6RjeqPH4_51axgWnqgv9CJx0gT3g0t4v9KdeheiL1ymfxZyE7-d3gUJ1p2IYwitWW1AHMoa0-G3LYSSgs3UeEx97MsroWStuz44Kt6SAZW54jOUZ7GbbydGsSg57VIXmnefG4rh6bnclMkuEjtF-rmpXg6a8GdbKCRFfye2l5Uy_7wSZLZzJWS9L-JUnKnYJZ5jGugzFwlEAg7d6u5wwX6CckbymxUP-CG1tRUD-gDyy58-qCsDuO8=&xkcb=SoC46_M33zvg7RxYYp0PbzkdCdPP&camk=ethIe0s0hednxqQVUoHAww==&p=4&fvj=0&vjs=3"
   },
   {
-    "title": "Supervisor",
-    "company": "SANDHYA ENTERPRISES",
-    "location": "Remote",
-    "salary": "N/A",
+    "title": "Customer Support Executive",
+    "company": "CbayExpress Technologies Private Limited",
     "experience": "N/A",
-    "postedDate": "EmployerActive 5 days ago",
-    "link": "https://in.indeed.com/rc/clk?jk=620fea2894e7dad0&bb=nr_D4oTjwqCHJrhI7kHE2fk_lN6GPc0D4dEq9wy8ZVVJLRAcYNzPxg6ezxjs4lkWGeTJY4Cz2PLeGhsE_H39QY4HsRc8Ap80b5rkej5Tvdt0L_Vnv1jRAFKDP9_TW7uw&xkcb=SoA467M33o3Y8wgMAL0GbzkdCdPP&fccid=5fd6d90da82b4e6c&cmp=Sandhya-Enterprises&ti=Supervisor&vjs=3"
+    "salary": "₹30,000 - ₹40,000 a month",
+    "location": "Noida, Uttar Pradesh",
+    "link": "https://in.indeed.com/rc/clk?jk=630b3fc081377c9b&bb=eWdPcGQAsRXtuFWxtvikM3IczhfifOCRh_Hr_qmvYvmOkACRT6kZF71VNqZYzQbSTbOobwhCcaL27VZIH5U_sBr95ngVNwLklRBp_uImGCJRFG2Xq60jcB_LI9uvZqq7&xkcb=SoD467M33zvg7RxYYp0ObzkdCdPP&fccid=bd8d628607d1b407&cmp=CbayExpress-Technologies-Private-Limited&ti=Customer+Support+Coordinator&vjs=3"
+  },
+  {
+    "title": "Virtual Assistant (US)",
+    "company": "Premium Help",
+    "experience": "N/A",
+    "salary": "N/A",
+    "location": "Remote",
+    "posted": "EmployerActive 6 days ago",
+    "link": "https://in.indeed.com/rc/clk?jk=7524805f9a23146f&bb=eWdPcGQAsRXtuFWxtvikM1PYrC43PczUHARoHylpQBTSENHGFxO9YLc7OTcsoRMrFzHtteOf0eCRkzqE7ukkW5ywupt5c54_q7fg-fjs-V5qXsfPXfn23lJpG_OnEJ7p&xkcb=SoBl67M33zvg7RxYYp0NbzkdCdPP&fccid=d987c7b933f75e4b&cmp=Charis-IT-Support-and-Services&ti=Virtual+Assistant&vjs=3"
+  },
+  {
+    "title": "Subject Matter Expert (Polity)",
+    "company": "Vaids ICS, Delhi",
+    "experience": "N/A",
+    "salary": "N/A",
+    "location": "Karol Bagh, Delhi, Delhi",
+    "link": "https://in.indeed.com/rc/clk?jk=6cdb1dd80150e4f1&bb=eWdPcGQAsRXtuFWxtvikM0WbfWFQ-DzVFTRLZvsIVETjD0010QxmGSrWLRGrOu0CZW0--5yN02FEz5M_fVndWAgS6HMwLWnP_6KseMO09XSlSShGEvipTjzru8-qkqed&xkcb=SoDR67M33zvg7RxYYp0MbzkdCdPP&fccid=dac0180a282cacff&cmp=Vaids-ICS%2C-Delhi&ti=Subject+Matter+Expert+%28polity%29&vjs=3"
   },
   {
     "title": "Data Entry Operator",
-    "company": "Nectar Lifesciences Ltd",
-    "location": "Chandigarh, Chandigarh",
-    "salary": "N/A",
+    "company": "ANUATION RESEARCH & CONSULTING LLP",
     "experience": "N/A",
-    "postedDate": "N/A",
-    "link": "https://in.indeed.com/rc/clk?jk=b61d8ebeab33b86b&bb=nr_D4oTjwqCHJrhI7kHE2Q6MJXUycHj58QY3s6wzwJLcDsmbKToieE5HuNJVBQzY6rEKQnY55rkM89m_Ur_H2Kz6tJovUz5EnGik85wqLdKFX5hA7Z72wvrYYklFf991&xkcb=SoCl67M33o3Y8wgMAL0FbzkdCdPP&fccid=ef2219cda0c3c16e&cmp=Nectar-Lifesciences-Ltd&ti=Data+Entry+Clerk&vjs=3"
+    "salary": "₹1,45,000 - ₹2,00,000 a year",
+    "location": "Noida, Uttar Pradesh",
+    "posted": "EmployerActive 4 days ago",
+    "link": "https://in.indeed.com/rc/clk?jk=d6803f30c14bc813&bb=eWdPcGQAsRXtuFWxtvikM4OkRjdMwqsjgqxyh_2et1WKdvhNzSeO43SQ1YikK0ODAG_zSCDhS8aYx8CAug8VdRadJ76XbHvZ2ec0FrVPRqIOH21CUtx8sqFdj4Cvfoe6&xkcb=SoA467M33zvg7RxYYp0DbzkdCdPP&fccid=572db7ef56df803a&cmp=ANUATION-RESEARCH-%2526-CONSULTING-LLP&ti=Data+Entry+Clerk&vjs=3"
+  },
+  {
+    "title": "Sales Assistant",
+    "company": "Durga collection",
+    "experience": "N/A",
+    "salary": "₹12,000 - ₹30,000 a month",
+    "location": "Remote in Azamgarh, Uttar Pradesh",
+    "link": "https://in.indeed.com/rc/clk?jk=3572969adf2ccf9e&bb=eWdPcGQAsRXtuFWxtvikMzaLARLjzKdrrlx6GV86X6HUoLhX22vI12SwPOfguJ_bKwgJZHYSedDUMF0n1mMVfWVJM7QOgxJ5SXzkW8OUbRWRGq5EI_cC1LFWw-aUjLxL&xkcb=SoCM67M33zvg7RxYYp0CbzkdCdPP&fccid=f106a905bb26697f&cmp=Durga-collection&ti=Sales+Assistant&vjs=3"
+  },
+  {
+    "title": "Hospital staff",
+    "company": "ROSEWOOD HOSPITAL",
+    "experience": "N/A",
+    "salary": "N/A",
+    "location": "Delhi, Delhi",
+    "posted": "EmployerActive 5 days ago",
+    "link": "https://in.indeed.com/rc/clk?jk=664d781b8b15f8fa&bb=eWdPcGQAsRXtuFWxtvikMwdOl6EyL3G09P-UAgWWk5VmLgnUbHHyJN2CIM5cFdRC_bJV9QgoNCqu17YaJU15gX6FtL4G__9g4f32tRuAjeZt4tPaPltIsDwEQwzm7SIU&xkcb=SoAR67M33zvg7RxYYp0BbzkdCdPP&fccid=44ad624dffb88eaf&cmp=ROSEWOOD-HOSPITAL&ti=Hospital+Staff&vjs=3"
+  },
+  {
+    "title": "Virtual Assistant (WFH/Remote)",
+    "company": "Growup Group",
+    "experience": "N/A",
+    "salary": "N/A",
+    "location": "Remote",
+    "link": "https://in.indeed.com/rc/clk?jk=5643cfdf94ca4ce3&bb=eWdPcGQAsRXtuFWxtvikM1Qw2peAnm3sY1_xsHPJ41ab_mcXcij8bhR4yyCx686KK8Y6grrx5tbvvvEBm9ua6T7bEzvZaqzp3RXOFRF6g6W6IowBUsEYEkklQBTMENE1&xkcb=SoCl67M33zvg7RxYYp0AbzkdCdPP&fccid=f8605f60b18be31a&vjs=3"
+  },
+  {
+    "title": "Customer Service Executive",
+    "company": "FCML Distributors Pvt. Ltd.",
+    "experience": "N/A",
+    "salary": "₹35,000 - ₹45,000 a month",
+    "location": "Sultanpur, Delhi, Delhi",
+    "posted": "EmployerActive 8 days ago",
+    "link": "https://in.indeed.com/rc/clk?jk=52c3a09e8d5d0e2c&bb=eWdPcGQAsRXtuFWxtvikMylAksOVaog1am3PxD7lwLlxO8BoBo3zxFZjVC1PPY5499bMSxROdLIQ_SBJhU0wEaCyhmOWmZgRqoX5jg1tPWYf1aA6W5T7h_GoC3o-Vp3o&xkcb=SoAr67M33zvg7RxYYp0HbzkdCdPP&fccid=3e9b25a39ec74b8c&cmp=FCML-Distributors-Pvt-Ltd&ti=Customer+Service+Representative&vjs=3"
+  },
+  {
+    "title": "Computer Operator cum Office coordinator",
+    "company": "GRID ARCHITECTURE INTERIORS PVT. LTD.",
+    "experience": "N/A",
+    "salary": "₹15,000 - ₹25,000 a month",
+    "location": "Delhi, Delhi",
+    "posted": "EmployerActive 3 days ago",
+    "link": "https://in.indeed.com/rc/clk?jk=118c9de8ed07f5ec&bb=eWdPcGQAsRXtuFWxtvikM1WbfZHqFSwemWjEiMJ55lcwUI32Fa8YlR0XBLyZ4GQGLtdFvL0u2UpgS_uBhDzBumqiNTizvWx61-ytrkPRhdIcDnKTEHukJLyrBwDJG5s3&xkcb=SoCf67M33zvg7RxYYp0GbzkdCdPP&fccid=d79a9222a349314b&cmp=GRID-ARCHITECTURE-INTERIORS-PVT.-LTD.&ti=Computer+Operator&vjs=3"
+  },
+  {
+    "title": "Product Marketing Internship",
+    "company": "Corizo",
+    "experience": "N/A",
+    "salary": "₹5,000 - ₹20,000 a month",
+    "location": "Remote",
+    "link": "https://in.indeed.com/rc/clk?jk=7c26f6fe5fa1a08f&bb=eWdPcGQAsRXtuFWxtvikM_8x7YJyTKPcNfpVVTmrZdMo9WsonUCgUC685O4_0z8Rrj3USZf5nTOxhX58k71F-CApURQJ8WXFJ3a-2tIYYeTSl9unTpgzOmCHQLxrWNJ6&xkcb=SoAC67M33zvg7RxYYp0FbzkdCdPP&fccid=179a80d5a57e7215&cmp=Corizo&ti=Marketing+Intern&vjs=3"
   }
 ]

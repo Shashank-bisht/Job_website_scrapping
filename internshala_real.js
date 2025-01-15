@@ -6,10 +6,9 @@ const scrapeData = async () => {
     const page = await browser.newPage();
 
     const data = [];
-
     try {
         for (let pageIdx = 1; pageIdx <= 2; pageIdx++) {
-            const url = `https://internshala.com/fresher-jobs/jobs-in-delhi/page-${pageIdx}/`;
+            const url = `https://internshala.com/jobs/page-${pageIdx}/`;
 
             await page.goto(url, { waitUntil: 'domcontentloaded' });
 
@@ -21,21 +20,41 @@ const scrapeData = async () => {
                 return Array.from(items).map(item => {
                     // Getting the necessary elements
                     const h3Element = item.querySelector('.job-internship-name a');
-                    const locationElement = item.querySelector('.locations');
+                    const companyNameElement = item.querySelector('.company-name');
+                    const experienceElement = item.querySelector('.row-1-item .ic-16-briefcase + span'); // Correct experience selector
                     const salaryElementDesktop = item.querySelector('.desktop');
                     const salaryElementMobile = item.querySelector('.mobile');
-                    const timeElement = item.querySelector('.status-success span');
+                    const locationElement = item.querySelector('.locations');
+                    const postedTimeElementStatus = item.querySelector('.status-success span'); // For status-success
+                    const postedTimeElementReschedule = item.querySelector('.ic-16-reschedule span'); // For ic-16-reschedule
+                    
+                    
+                    // Get job title and link
+                    const title = h3Element ? h3Element.innerText.trim() : 'N/A';
+                    // Get company name
+                    const company = companyNameElement ? companyNameElement.innerText.trim() : 'N/A';
+                    
+                    // Get experience (e.g., "1-3 years")
+                    const experience = experienceElement ? experienceElement.innerText.trim() : 'N/A';
 
                     // Get the text for salary from either desktop or mobile
                     const salary = salaryElementDesktop ? salaryElementDesktop.innerText.trim() :
                                    (salaryElementMobile ? salaryElementMobile.innerText.trim() : 'N/A');
+                                   
+                   // Get location
+                   const location = locationElement ? locationElement.innerText.trim() : 'N/A';
 
-                    const h3Text = h3Element ? h3Element.innerText : 'N/A';
-                    const h3Link = h3Element ? h3Element.getAttribute('href') : 'N/A';
-                    const location = locationElement ? locationElement.innerText.trim() : 'N/A';
-                    const time = timeElement ? timeElement.innerText.trim() : 'N/A';
+                   // Get posted time (e.g., "1 day ago" or "Few hours ago")
+                   const posted = postedTimeElementStatus ? postedTimeElementStatus.innerText.trim() : 
+                                  (postedTimeElementReschedule ? postedTimeElementReschedule.innerText.trim() : 'N/A');
+                    // link
+                    const link = h3Element ? h3Element.getAttribute('href') : 'N/A';
 
-                    return { h3Text, h3Link: `https://internshala.com${h3Link}`, location, salary, time };
+
+
+
+                    // Return the structured data
+                    return { title, company, experience, salary, location, posted , link: `https://internshala.com${link}`};
                 });
             });
 

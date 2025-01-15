@@ -26,7 +26,7 @@ const fs = require('fs');  // Import the fs module to interact with the file sys
       // Extracting job details from the page
       const jobElements = await page.$$('.cardOutline');
       for (const jobElement of jobElements) {
-        let title, company, location, salary, experience, postedDate, link;
+        let title, company,experience, salary, location, posted, link;
 
         try {
           title = await jobElement.$eval('.jobTitle', element => element.textContent.trim());
@@ -38,18 +38,6 @@ const fs = require('fs');  // Import the fs module to interact with the file sys
           company = await jobElement.$eval('[data-testid="company-name"]', element => element.textContent.trim());
         } catch (error) {
           company = 'N/A';
-        }
-
-        try {
-          location = await jobElement.$eval('[data-testid="text-location"]', element => element.textContent.trim());
-        } catch (error) {
-          location = 'N/A';
-        }
-
-        try {
-          salary = await jobElement.$eval('.salary-snippet-container', element => element.textContent.trim());
-        } catch (error) {
-          salary = 'N/A';
         }
 
         try {
@@ -67,7 +55,19 @@ const fs = require('fs');  // Import the fs module to interact with the file sys
         }
 
         try {
-          postedDate = await jobElement.$eval('[data-testid="myJobsStateDate"]', element => element.textContent.trim());
+          salary = await jobElement.$eval('.salary-snippet-container', element => element.textContent.trim());
+        } catch (error) {
+          salary = 'N/A';
+        }
+
+        try {
+          location = await jobElement.$eval('[data-testid="text-location"]', element => element.textContent.trim());
+        } catch (error) {
+          location = 'N/A';
+        }
+
+        try {
+          posted = await jobElement.$eval('[data-testid="myJobsStateDate"]', element => element.textContent.trim());
         } catch (error) {
           postedDate = 'N/A';
         }
@@ -78,7 +78,7 @@ const fs = require('fs');  // Import the fs module to interact with the file sys
           link = 'N/A';
         }
 
-        jobDetailsArray.push({ title, company, location, salary, experience, postedDate, link });
+        jobDetailsArray.push({ title, company,experience, salary, location, posted, link });
       }
     }
 

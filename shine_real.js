@@ -35,23 +35,24 @@ const scrapeData = async () => {
                 jobElements.forEach(jobElement => {
                     const titleElement = jobElement.querySelector('.jobCard_pReplaceH2__xWmHg a');
                     const companyElement = jobElement.querySelector('.jobCard_jobCard_cName__mYnow span');
-                    const locationElement = jobElement.querySelector('.jobCard_locationIcon__zrWt2');
                     const experienceElement = jobElement.querySelector('.jobCard_jobCard_lists_item__YxRkV.jobCard_jobIcon__3FB1t');
+                    const locationElement = jobElement.querySelector('.jobCard_locationIcon__zrWt2');
                     
                     // Correct selector for the "posted" date
                     const postedElement = jobElement.querySelector('.jobCard_jobCard_features__wJid6 > span:last-child'); 
 
                     const title = titleElement ? titleElement.innerText.trim() : 'N/A';
-                    const link = titleElement ? `https://www.shine.com${titleElement.getAttribute('href')}` : 'N/A';
                     const company = companyElement ? companyElement.innerText.trim() : 'N/A';
-                    const location = locationElement ? locationElement.innerText.trim() : 'N/A';
                     const experience = experienceElement ? experienceElement.innerText.trim() : 'N/A';
+                    const salary = 'N/A'
+                    const location = locationElement ? locationElement.innerText.trim() : 'N/A';
                     const posted = postedElement ? postedElement.innerText.trim() : 'N/A'; // Ensure this is correctly extracted
+                    const link = titleElement ? `https://www.shine.com${titleElement.getAttribute('href')}` : 'N/A';
 
                     // Log the data for debugging purposes
-                    console.log({ title, link, company, location, experience, posted });
+                    // console.log({ title, company,experience,salary,location, posted, link });
 
-                    jobList.push({ title, link, company, location, experience, posted });
+                    jobList.push({title, company,experience,salary,location, posted, link});
                 });
 
                 return jobList;

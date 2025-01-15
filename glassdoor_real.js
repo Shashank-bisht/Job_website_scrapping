@@ -34,11 +34,12 @@ const fs = require('fs');  // File system module to write data to a file
         return Array.from(document.querySelectorAll('.jobCard')).map(card => {
             const title = card.querySelector('.JobCard_jobTitle__GLyJ1')?.innerText || 'N/A';
             const company = card.querySelector('.EmployerProfile_compactEmployerName__9MGcV')?.innerText || 'N/A';
-            const location = card.querySelector('.JobCard_location__Ds1fM')?.innerText || 'N/A';
+            const experience = 'N/A'
             const salary = card.querySelector('.JobCard_salaryEstimate__QpbTW')?.innerText || 'N/A';
-            const age = card.querySelector('.JobCard_listingAge__jJsuc')?.innerText || 'N/A';
-            const applyLink = card.querySelector('.JobCard_jobTitle__GLyJ1')?.href || 'N/A';
-            return { title, company, location, salary, age, applyLink };
+            const location = card.querySelector('.JobCard_location__Ds1fM')?.innerText || 'N/A';
+            const posted = card.querySelector('.JobCard_listingAge__jJsuc')?.innerText || 'N/A';
+            const link = card.querySelector('.JobCard_jobTitle__GLyJ1')?.href || 'N/A';
+            return { title, company, experience, salary, location, posted, link };
         });
     });
 
@@ -65,11 +66,12 @@ const fs = require('fs');  // File system module to write data to a file
                     return Array.from(document.querySelectorAll('.jobCard')).map(card => {
                         const title = card.querySelector('.JobCard_jobTitle__GLyJ1')?.innerText || 'N/A';
                         const company = card.querySelector('.EmployerProfile_compactEmployerName__9MGcV')?.innerText || 'N/A';
-                        const location = card.querySelector('.JobCard_location__Ds1fM')?.innerText || 'N/A';
+                        const experience = 'N/A'
                         const salary = card.querySelector('.JobCard_salaryEstimate__QpbTW')?.innerText || 'N/A';
-                        const age = card.querySelector('.JobCard_listingAge__jJsuc')?.innerText || 'N/A';
-                        const applyLink = card.querySelector('.JobCard_jobTitle__GLyJ1')?.href || 'N/A';
-                        return { title, company, location, salary, age, applyLink };
+                        const location = card.querySelector('.JobCard_location__Ds1fM')?.innerText || 'N/A';
+                        const posted = card.querySelector('.JobCard_listingAge__jJsuc')?.innerText || 'N/A';
+                        const link = card.querySelector('.JobCard_jobTitle__GLyJ1')?.href || 'N/A';
+                        return { title, company, experience, salary, location, posted, link };
                     });
                 });
 
