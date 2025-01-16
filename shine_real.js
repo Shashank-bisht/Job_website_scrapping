@@ -7,11 +7,11 @@ const scrapeData = async () => {
         slowMo: 50, // Slow down actions to make the scraping more visible
     });
     const page = await browser.newPage();
-
+    
     const data = [];
     try {
         for (let pageIdx = 2; pageIdx <= 3; pageIdx++) { // Adjust page range as needed
-            const url = `https://www.shine.com/job-search/jobs-jobs-${pageIdx}`;
+            const url = `https://www.shine.com/job-search/jobs-jobs-jobs-in-india-${pageIdx}?q=jobs-jobs&loc=india`;
 
             await page.goto(url, { waitUntil: 'networkidle0' }); // Wait for the page to fully load
 
@@ -48,11 +48,11 @@ const scrapeData = async () => {
                     const location = locationElement ? locationElement.innerText.trim() : 'N/A';
                     const posted = postedElement ? postedElement.innerText.trim() : 'N/A'; // Ensure this is correctly extracted
                     const link = titleElement ? `https://www.shine.com${titleElement.getAttribute('href')}` : 'N/A';
-
+                    const name = 'Shine'
                     // Log the data for debugging purposes
                     // console.log({ title, company,experience,salary,location, posted, link });
 
-                    jobList.push({title, company,experience,salary,location, posted, link});
+                    jobList.push({title, company,experience,salary,location, posted, link,name});
                 });
 
                 return jobList;

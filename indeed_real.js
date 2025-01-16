@@ -14,7 +14,7 @@ const fs = require('fs');  // Import the fs module to interact with the file sys
     const jobDetailsArray = []; // Initialize an array to store all job details
 
     // Set the range of page numbers you want to scrape
-    const startPage = 5;
+    const startPage = 4;
     const endPage = 6; // Scraping first 3 pages, adjust as needed
 
     for (let pageIdx = startPage; pageIdx < endPage; pageIdx++) {
@@ -77,8 +77,8 @@ const fs = require('fs');  // Import the fs module to interact with the file sys
         } catch (error) {
           link = 'N/A';
         }
-
-        jobDetailsArray.push({ title, company,experience, salary, location, posted, link });
+        const name = 'Indeed'
+        jobDetailsArray.push({ title, company,experience, salary, location, posted, link ,name});
       }
     }
 

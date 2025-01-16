@@ -39,7 +39,8 @@ const fs = require('fs');  // File system module to write data to a file
             const location = card.querySelector('.JobCard_location__Ds1fM')?.innerText || 'N/A';
             const posted = card.querySelector('.JobCard_listingAge__jJsuc')?.innerText || 'N/A';
             const link = card.querySelector('.JobCard_jobTitle__GLyJ1')?.href || 'N/A';
-            return { title, company, experience, salary, location, posted, link };
+            const name = 'Glassdoor'
+            return { title, company, experience, salary, location, posted, link ,name };
         });
     });
 
@@ -71,7 +72,8 @@ const fs = require('fs');  // File system module to write data to a file
                         const location = card.querySelector('.JobCard_location__Ds1fM')?.innerText || 'N/A';
                         const posted = card.querySelector('.JobCard_listingAge__jJsuc')?.innerText || 'N/A';
                         const link = card.querySelector('.JobCard_jobTitle__GLyJ1')?.href || 'N/A';
-                        return { title, company, experience, salary, location, posted, link };
+                        const name = 'Glassdoor'
+                        return { title, company, experience, salary, location, posted, link, name };
                     });
                 });
 

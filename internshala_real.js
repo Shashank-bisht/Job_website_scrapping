@@ -50,11 +50,12 @@ const scrapeData = async () => {
                     // link
                     const link = h3Element ? h3Element.getAttribute('href') : 'N/A';
 
-
+                 ///  company name 
+                   const name = 'Internshala'
 
 
                     // Return the structured data
-                    return { title, company, experience, salary, location, posted , link: `https://internshala.com${link}`};
+                    return { title, company, experience, salary, location, posted , link: `https://internshala.com${link}`, name};
                 });
             });
 

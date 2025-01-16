@@ -30,15 +30,17 @@ const fs = require('fs');
         const detailsArray = [];
 
         jobElements.forEach(jobElement => {
-          const title = jobElement.querySelector('.title').textContent.trim();
-          const company = jobElement.querySelector('.comp-name').textContent.trim();
-          const experience = jobElement.querySelector('.expwdth').textContent.trim();
-          const salary = jobElement.querySelector('.sal').textContent.trim();
-          const location = jobElement.querySelector('.locWdth').textContent.trim();
-          const posted = jobElement.querySelector('.job-post-day').textContent.trim();
-          const link = jobElement.querySelector('.title').getAttribute('href');
+          // Safely extract each detail using optional chaining and fallback values
+          const title = jobElement.querySelector('.title')?.textContent.trim() || 'N/A';
+          const company = jobElement.querySelector('.comp-name')?.textContent.trim() || 'N/A';
+          const experience = jobElement.querySelector('.expwdth')?.textContent.trim() || 'N/A';
+          const salary = jobElement.querySelector('.sal')?.textContent.trim() || 'N/A';
+          const location = jobElement.querySelector('.locWdth')?.textContent.trim() || 'N/A';
+          const posted = jobElement.querySelector('.job-post-day')?.textContent.trim() || 'N/A';
+          const link = jobElement.querySelector('.title')?.getAttribute('href') || 'N/A';
+          const name = 'Naukri'; // Static field for the company name
 
-          detailsArray.push({ title, company, experience, salary, location, posted, link });
+          detailsArray.push({ title, company, experience, salary, location, posted, link, name });
         });
 
         return detailsArray;
@@ -52,7 +54,7 @@ const fs = require('fs');
     console.log('All job details:', jobDetailsArray);
 
     // Write job details to JSON file
-    fs.writeFileSync('naukari_jobs.json', JSON.stringify(jobDetailsArray, null, 2));
+    fs.writeFileSync('naukri_jobs.json', JSON.stringify(jobDetailsArray, null, 2));
 
     console.log('Job details saved to jobDetails.json');
 
