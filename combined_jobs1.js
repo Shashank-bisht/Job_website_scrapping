@@ -25,6 +25,11 @@ let interleavedJobs = [];
 // Use a Set to track added job links to avoid duplicates
 let jobLinksSet = new Set();
 
+// Function to count "N/A" fields
+function countNAFields(job) {
+  return Object.values(job).filter(value => value === 'N/A').length;
+}
+
 // Iterate through the maximum length and push jobs in an alternating pattern
 for (let i = 0; i < maxLength; i++) {
   // Iterate through each website's job data
@@ -33,13 +38,22 @@ for (let i = 0; i < maxLength; i++) {
     if (allJobs[j][i]) {
       let job = allJobs[j][i];
       
-      // If the job's link (or title, or any other unique identifier) is not already in the set, add it
-      if (!jobLinksSet.has(job.link)) {
+      // Filter out jobs with more than two "N/A" fields
+      if (!jobLinksSet.has(job.link) && countNAFields(job) <= 2) {
         interleavedJobs.push(job);
         jobLinksSet.add(job.link); // Add the job's link to the set
       }
     }
   }
+}
+
+// Save filtered jobs to combined.json
+const combinedFilePath = 'combined.json';
+try {
+  fs.writeFileSync(combinedFilePath, JSON.stringify(interleavedJobs, null, 2), 'utf-8');
+  console.log(`Filtered jobs have been saved to ${combinedFilePath}, overwriting old content.`);
+} catch (error) {
+  console.error('Error writing to combined.json:', error);
 }
 
 // MongoDB connection URI (MongoDB Atlas)

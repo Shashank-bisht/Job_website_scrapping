@@ -15,7 +15,7 @@ const fs = require('fs');  // Import the fs module to interact with the file sys
 
     // Set the range of page numbers you want to scrape
     const startPage = 4;
-    const endPage = 6; // Scraping first 3 pages, adjust as needed
+    const endPage = 5; // Scraping first 3 pages, adjust as needed
 
     for (let pageIdx = startPage; pageIdx < endPage; pageIdx++) {
       const url = `https://in.indeed.com/jobs?q=Jobs&start=${pageIdx * 10}`; // Generate URL for each page
