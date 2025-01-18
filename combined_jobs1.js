@@ -73,7 +73,11 @@ async function storeJobsInDB(jobs) {
     const db = client.db(dbName);
     const collection = db.collection(collectionName);
 
-    // Insert jobs into MongoDB collection
+    // Remove all old data from the collection
+    const deleteResult = await collection.deleteMany({});
+    console.log(`${deleteResult.deletedCount} old job documents were deleted.`);
+
+    // Insert new jobs into MongoDB collection
     const result = await collection.insertMany(jobs);
     console.log(`${result.insertedCount} jobs were inserted into the database.`);
 

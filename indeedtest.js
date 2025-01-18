@@ -1,11 +1,7 @@
-const puppeteer = require('puppeteer-extra');
+const puppeteer = require('puppeteer');
 const fs = require('fs');  // Import the fs module to interact with the file system
-const puppeteerExtraPluginStealth = require('puppeteer-extra-plugin-stealth');
 
 (async () => {
-  // Use the stealth plugin to avoid Cloudflare detection
-  puppeteer.use(puppeteerExtraPluginStealth());
-
   const browser = await puppeteer.launch({
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
     headless: false // Set to true for headless mode
@@ -18,7 +14,7 @@ const puppeteerExtraPluginStealth = require('puppeteer-extra-plugin-stealth');
     const jobDetailsArray = []; // Initialize an array to store all job details
 
     const startPage = 4; // Starting page index for scraping
-    const endPage = 30;   // Ending page index (stop when the number of pages is reached)
+    const endPage = 10;   // Ending page index (stop when the number of pages is reached)
     let currentPage = startPage;
 
     // Set the initial URL
@@ -30,10 +26,21 @@ const puppeteerExtraPluginStealth = require('puppeteer-extra-plugin-stealth');
       // Check for CAPTCHA presence
       const captchaIframe = await page.$('iframe[src*="recaptcha"]');
       if (captchaIframe) {
-        console.log('Captcha detected, please solve it manually...');
-        
-        // Wait for 7 seconds before continuing, allowing manual CAPTCHA solving
-        await new Promise(resolve => setTimeout(resolve, 7000)); // Wait for 7 seconds
+        console.log('Captcha detected, trying to solve...');
+
+        // Wait for the CAPTCHA iframe to load
+        const iframe = await page.frames().find(frame => frame.url().includes('recaptcha'));
+
+        // Wait for the checkbox to appear and click it
+        await iframe.waitForSelector('.recaptcha-checkbox');
+        await iframe.click('.recaptcha-checkbox');
+
+        // Wait for CAPTCHA to process (This is just a simulation of the click, real CAPTCHA solving may need API)
+        console.log('Captcha clicked, waiting for processing...');
+        await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 5 seconds
+
+        // Continue to the next page after CAPTCHA is bypassed
+        await page.waitForNavigation({ waitUntil: 'domcontentloaded' });
       }
 
       // Extracting job details from the current page
@@ -82,7 +89,7 @@ const puppeteerExtraPluginStealth = require('puppeteer-extra-plugin-stealth');
         try {
           posted = await jobElement.$eval('[data-testid="myJobsStateDate"]', element => element.textContent.trim());
         } catch (error) {
-          posted = 'N/A'; // Corrected typo
+          postedDate = 'N/A';
         }
 
         try {
@@ -90,14 +97,13 @@ const puppeteerExtraPluginStealth = require('puppeteer-extra-plugin-stealth');
         } catch (error) {
           link = 'N/A';
         }
-
         const name = 'Indeed';
         jobDetailsArray.push({ title, company, experience, salary, location, posted, link, name });
       }
 
       // Add a delay after each page to prevent CAPTCHA triggering too often
-      console.log(`Waiting for 7 seconds before loading the next page...`);
-      await new Promise(resolve => setTimeout(resolve, 7000)); // Wait for 7 seconds
+      console.log(`Waiting for 10 seconds before loading the next page...`);
+      await new Promise(resolve => setTimeout(resolve, 10000)); // Wait for 10 seconds
 
       // Try to click the "Next Page" button
       try {

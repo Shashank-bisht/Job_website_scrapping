@@ -34,20 +34,20 @@ const fs = require('fs');  // File system module to write data to a file
         return Array.from(document.querySelectorAll('.jobCard')).map(card => {
             const title = card.querySelector('.JobCard_jobTitle__GLyJ1')?.innerText || 'N/A';
             const company = card.querySelector('.EmployerProfile_compactEmployerName__9MGcV')?.innerText || 'N/A';
-            const experience = 'N/A'
+            const experience = 'N/A';
             const salary = card.querySelector('.JobCard_salaryEstimate__QpbTW')?.innerText || 'N/A';
             const location = card.querySelector('.JobCard_location__Ds1fM')?.innerText || 'N/A';
             const posted = card.querySelector('.JobCard_listingAge__jJsuc')?.innerText || 'N/A';
             const link = card.querySelector('.JobCard_jobTitle__GLyJ1')?.href || 'N/A';
-            const name = 'Glassdoor'
-            return { title, company, experience, salary, location, posted, link ,name };
+            const name = 'Glassdoor';
+            return { title, company, experience, salary, location, posted, link, name };
         });
     });
 
     console.log('Jobs from the first page:', jobs);
 
     // Number of times you want to click the "Show More Jobs" button
-    const maxClicks = 3;  // You can set this to any number
+    const maxClicks = 30;  // You can set this to any number
     let clickCount = 0;
     let hasNextPage = true;
 
@@ -58,8 +58,12 @@ const fs = require('fs');  // File system module to write data to a file
             if (loadMoreButton) {
                 // Click the "Show More Jobs" button
                 await loadMoreButton.click();
-                // Wait for the next batch of jobs to load
-                await page.waitForTimeout(5000); // Wait for 5 seconds for new jobs to load
+
+                // Wait for a random delay between 3-5 seconds for new jobs to load
+                const delayTime = Math.floor(Math.random() * 2000) + 3000; // Random time between 3000ms and 5000ms
+                console.log(`Waiting for ${delayTime / 1000} seconds before scraping more jobs...`);
+                await page.waitForTimeout(delayTime); // Wait for the delay
+
                 console.log(`Clicked "Show More Jobs" for the ${clickCount + 1} time.`);
 
                 // Scrape additional jobs
@@ -67,12 +71,12 @@ const fs = require('fs');  // File system module to write data to a file
                     return Array.from(document.querySelectorAll('.jobCard')).map(card => {
                         const title = card.querySelector('.JobCard_jobTitle__GLyJ1')?.innerText || 'N/A';
                         const company = card.querySelector('.EmployerProfile_compactEmployerName__9MGcV')?.innerText || 'N/A';
-                        const experience = 'N/A'
+                        const experience = 'N/A';
                         const salary = card.querySelector('.JobCard_salaryEstimate__QpbTW')?.innerText || 'N/A';
                         const location = card.querySelector('.JobCard_location__Ds1fM')?.innerText || 'N/A';
                         const posted = card.querySelector('.JobCard_listingAge__jJsuc')?.innerText || 'N/A';
                         const link = card.querySelector('.JobCard_jobTitle__GLyJ1')?.href || 'N/A';
-                        const name = 'Glassdoor'
+                        const name = 'Glassdoor';
                         return { title, company, experience, salary, location, posted, link, name };
                     });
                 });
