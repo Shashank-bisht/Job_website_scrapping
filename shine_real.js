@@ -36,7 +36,7 @@ const scrapeData = async () => {
     
     const data = [];
     try {
-        for (let pageIdx = 2; pageIdx <= 40; pageIdx++) { // Adjust page range as needed
+        for (let pageIdx = 2; pageIdx <= 200; pageIdx++) { // Adjust page range as needed
             const url = `https://www.shine.com/job-search/jobs-jobs-jobs-in-india-${pageIdx}?q=jobs-jobs&loc=india`;
 
             // Set a random user-agent for each request

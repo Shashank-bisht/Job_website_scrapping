@@ -33,7 +33,7 @@ const scrapeData = async () => {
 
     const data = [];
     try {
-        for (let pageIdx = 1; pageIdx <= 15; pageIdx++) {
+        for (let pageIdx = 2; pageIdx <= 131; pageIdx++) {
             const url = `https://internshala.com/jobs/page-${pageIdx}/`;
 
             // Set a random user-agent for each request
@@ -57,7 +57,8 @@ const scrapeData = async () => {
                     const locationElement = item.querySelector('.locations');
                     const postedTimeElementStatus = item.querySelector('.status-success span'); // For status-success
                     const postedTimeElementReschedule = item.querySelector('.ic-16-reschedule span'); // For ic-16-reschedule
-                    
+                    const postedTimeElementInactive = item.querySelector('.status-inactive span'); 
+                    const postedTimeElementStatusinfo = item.querySelector('.status-info span')
                     // Get job title and link
                     const title = h3Element ? h3Element.innerText.trim() : 'N/A';
                     // Get company name
@@ -74,8 +75,10 @@ const scrapeData = async () => {
                    const location = locationElement ? locationElement.innerText.trim() : 'N/A';
 
                    // Get posted time (e.g., "1 day ago" or "Few hours ago")
-                   const posted = postedTimeElementStatus ? postedTimeElementStatus.innerText.trim() : 
-                                  (postedTimeElementReschedule ? postedTimeElementReschedule.innerText.trim() : 'N/A');
+                   const posted = postedTimeElementStatus ? postedTimeElementStatus.innerText.trim() :
+                      postedTimeElementReschedule ? postedTimeElementReschedule.innerText.trim() :
+                      postedTimeElementInactive ? postedTimeElementInactive.innerText.trim(): postedTimeElementStatusinfo ? postedTimeElementStatusinfo.innerText.trim() : 'N/A';
+
                     // link
                     const link = h3Element ? h3Element.getAttribute('href') : 'N/A';
 

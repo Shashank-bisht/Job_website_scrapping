@@ -14,13 +14,33 @@ const puppeteerExtraPluginStealth = require('puppeteer-extra-plugin-stealth');
   const page = await browser.newPage();
   await page.setViewport({ width: 1366, height: 768 });
 
+  const jobDetailsArray = []; // Initialize an array to store all job details
+  const startPage = 96; // Starting page index for scraping
+  const endPage = 140;   // Ending page index (stop when the number of pages is reached)
+  let currentPage = startPage;
+
+  // Function to read the existing file and append new data to it
+  const saveDataToFile = (data) => {
+    try {
+      // Check if the file already exists
+      if (fs.existsSync('indeed_jobs.json')) {
+        // If the file exists, read its content
+        const existingData = JSON.parse(fs.readFileSync('indeed_jobs.json', 'utf8'));
+        // Append new job details to the existing data
+        existingData.push(...data);
+        // Write the updated data to the file
+        fs.writeFileSync('indeed_jobs.json', JSON.stringify(existingData, null, 2), 'utf-8');
+      } else {
+        // If the file doesn't exist, create it and write the data
+        fs.writeFileSync('indeed_jobs.json', JSON.stringify(data, null, 2), 'utf-8');
+      }
+      console.log('Job details saved to indeed_jobs.json');
+    } catch (err) {
+      console.error('Error saving data to file:', err);
+    }
+  };
+
   try {
-    const jobDetailsArray = []; // Initialize an array to store all job details
-
-    const startPage = 4; // Starting page index for scraping
-    const endPage = 30;   // Ending page index (stop when the number of pages is reached)
-    let currentPage = startPage;
-
     // Set the initial URL
     await page.goto(`https://in.indeed.com/jobs?q=Jobs&start=${(currentPage - 1) * 10}`, { waitUntil: 'domcontentloaded' });
 
@@ -95,6 +115,9 @@ const puppeteerExtraPluginStealth = require('puppeteer-extra-plugin-stealth');
         jobDetailsArray.push({ title, company, experience, salary, location, posted, link, name });
       }
 
+      // Save data after scraping each page
+      saveDataToFile(jobDetailsArray);
+
       // Add a delay after each page to prevent CAPTCHA triggering too often
       console.log(`Waiting for 7 seconds before loading the next page...`);
       await new Promise(resolve => setTimeout(resolve, 7000)); // Wait for 7 seconds
@@ -115,18 +138,21 @@ const puppeteerExtraPluginStealth = require('puppeteer-extra-plugin-stealth');
       }
     }
 
-    // Log all job details
+    // Final log
     console.log('All job details:', jobDetailsArray);
 
-    // Write the job details array to a JSON file
-    fs.writeFileSync('indeed_jobs.json', JSON.stringify(jobDetailsArray, null, 2), 'utf-8');
-
-    console.log('Job details saved to indeed_jobs.json');
+    // Final save in case the loop finishes without error
+    saveDataToFile(jobDetailsArray);
 
     // Close the browser after scraping
     await browser.close();
   } catch (error) {
     console.error('Error:', error);
+
+    // Save the job data collected up to the point of failure
+    saveDataToFile(jobDetailsArray);
+
+    // Close the browser in case of error
     await browser.close();
   }
 })();

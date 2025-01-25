@@ -1,92 +1,111 @@
 const fs = require('fs');
 const { MongoClient } = require('mongodb');
 
-// Read the job data from multiple JSON files (each file represents a website)
-const glassdoorJobs = JSON.parse(fs.readFileSync('glassdoor_jobs.json', 'utf-8'));
-const naukriJobs = JSON.parse(fs.readFileSync('naukri_jobs.json', 'utf-8'));
-const shineJobs = JSON.parse(fs.readFileSync('Shine_jobs.json', 'utf-8'));
-const jobWebsite4Jobs = JSON.parse(fs.readFileSync('Internshala_jobs.json', 'utf-8'));
-const jobWebsite5Jobs = JSON.parse(fs.readFileSync('indeed_jobs.json', 'utf-8'));
-
-// Combine all job data into one array
-const allJobs = [glassdoorJobs, naukriJobs, shineJobs, jobWebsite4Jobs, jobWebsite5Jobs];
-
-// Find the maximum length of the job arrays
-const maxLength = Math.max(
-  glassdoorJobs.length,
-  naukriJobs.length,
-  shineJobs.length,
-  jobWebsite4Jobs.length,
-  jobWebsite5Jobs.length
-);
-
-// Create a new array to hold the interleaved jobs
-let interleavedJobs = [];
-// Use a Set to track added job links to avoid duplicates
-let jobLinksSet = new Set();
+// Helper function to read a large JSON file efficiently
+function readLargeJsonFile(filePath) {
+  let data = '';
+  return new Promise((resolve, reject) => {
+    const stream = fs.createReadStream(filePath, 'utf-8');
+    stream.on('data', chunk => {
+      data += chunk;
+    });
+    stream.on('end', () => {
+      try {
+        resolve(JSON.parse(data));
+      } catch (err) {
+        reject(err);
+      }
+    });
+    stream.on('error', reject);
+  });
+}
 
 // Function to count "N/A" fields
 function countNAFields(job) {
   return Object.values(job).filter(value => value === 'N/A').length;
 }
 
-// Iterate through the maximum length and push jobs in an alternating pattern
-for (let i = 0; i < maxLength; i++) {
-  // Iterate through each website's job data
-  for (let j = 0; j < allJobs.length; j++) {
-    // If there is a job at the current index for this website, check if it already exists in the set
-    if (allJobs[j][i]) {
-      let job = allJobs[j][i];
-      
-      // Filter out jobs with more than two "N/A" fields
-      if (!jobLinksSet.has(job.link) && countNAFields(job) <= 2) {
-        interleavedJobs.push(job);
-        jobLinksSet.add(job.link); // Add the job's link to the set
-      }
-    }
-  }
-}
-
-// Save filtered jobs to combined.json
-const combinedFilePath = 'combined.json';
-try {
-  fs.writeFileSync(combinedFilePath, JSON.stringify(interleavedJobs, null, 2), 'utf-8');
-  console.log(`Filtered jobs have been saved to ${combinedFilePath}, overwriting old content.`);
-} catch (error) {
-  console.error('Error writing to combined.json:', error);
-}
-
 // MongoDB connection URI (MongoDB Atlas)
 const uri = 'mongodb+srv://shashankbisht5373:v63sFiF0TsxMXoiu@cluster0.xuwpn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
-
-// The database and collection names in MongoDB Atlas
-const dbName = 'jobListings'; // Database name
-const collectionName = 'jobs'; // Collection name
+const dbName = 'jobListings';
+const collectionName = 'jobs';
 
 async function storeJobsInDB(jobs) {
   const client = new MongoClient(uri);
+  const batchSize = 1000; // Set a batch size to avoid overwhelming MongoDB
 
   try {
-    // Connect to MongoDB Atlas
     await client.connect();
-    
     const db = client.db(dbName);
     const collection = db.collection(collectionName);
 
-    // Remove all old data from the collection
-    const deleteResult = await collection.deleteMany({});
-    console.log(`${deleteResult.deletedCount} old job documents were deleted.`);
+    // Delete old data
+    await collection.deleteMany({});
 
-    // Insert new jobs into MongoDB collection
-    const result = await collection.insertMany(jobs);
-    console.log(`${result.insertedCount} jobs were inserted into the database.`);
-
+    // Insert in batches
+    for (let i = 0; i < jobs.length; i += batchSize) {
+      const batch = jobs.slice(i, i + batchSize);
+      await collection.insertMany(batch);
+      console.log(`Inserted ${batch.length} jobs into the database.`);
+    }
   } catch (error) {
     console.error('Error inserting jobs into MongoDB:', error);
   } finally {
-    await client.close(); // Close the MongoDB connection
+    await client.close();
   }
 }
 
-// Call the function to store jobs in the database
-storeJobsInDB(interleavedJobs);
+// Function to remove duplicates within a single list based on job links
+function removeDuplicates(jobs) {
+  let uniqueJobs = [];
+  let jobLinksSet = new Set();
+
+  for (let job of jobs) {
+    if (!jobLinksSet.has(job.link) && countNAFields(job) <= 2) {
+      uniqueJobs.push(job);
+      jobLinksSet.add(job.link); // Add the job's link to the set to track uniqueness
+    }
+  }
+
+  return uniqueJobs;
+}
+
+async function processJobs() {
+  try {
+    // Read large JSON files
+    const glassdoorJobs = await readLargeJsonFile('glassdoor_jobs.json');
+    const naukriJobs = await readLargeJsonFile('naukri_jobs.json');
+    const shineJobs = await readLargeJsonFile('Shine_jobs.json');
+    const jobWebsite4Jobs = await readLargeJsonFile('Internshala_jobs.json');
+    const jobWebsite5Jobs = await readLargeJsonFile('indeed_jobs.json');
+
+    // Remove duplicates from each individual job list
+    const uniqueGlassdoorJobs = removeDuplicates(glassdoorJobs);
+    const uniqueNaukriJobs = removeDuplicates(naukriJobs);
+    const uniqueShineJobs = removeDuplicates(shineJobs);
+    const uniqueInternshalaJobs = removeDuplicates(jobWebsite4Jobs);
+    const uniqueIndeedJobs = removeDuplicates(jobWebsite5Jobs);
+
+    // Combine all unique jobs into one array
+    const allUniqueJobs = [
+      ...uniqueGlassdoorJobs,
+      ...uniqueNaukriJobs,
+      ...uniqueShineJobs,
+      ...uniqueInternshalaJobs,
+      ...uniqueIndeedJobs,
+    ];
+
+    // Save filtered jobs to combined.json
+    const combinedFilePath = 'combined.json';
+    fs.writeFileSync(combinedFilePath, JSON.stringify(allUniqueJobs, null, 2), 'utf-8');
+    console.log(`Filtered jobs have been saved to ${combinedFilePath}.`);
+
+    // Store jobs in MongoDB
+    await storeJobsInDB(allUniqueJobs);
+
+  } catch (error) {
+    console.error('Error during processing jobs:', error);
+  }
+}
+
+processJobs();

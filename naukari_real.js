@@ -27,6 +27,23 @@ const getRandomUserAgent = () => {
     return userAgents[randomIndex];
 };
 
+// Function to read existing data from the JSON file
+const readJobData = () => {
+  try {
+    const data = fs.readFileSync('naukri_jobs.json');
+    return JSON.parse(data);
+  } catch (err) {
+    return []; // If the file does not exist or there's an error, return an empty array
+  }
+};
+
+// Function to append new job data to the existing file
+const appendJobData = (newData) => {
+  const existingData = readJobData();
+  const updatedData = [...existingData, ...newData];
+  fs.writeFileSync('naukri_jobs.json', JSON.stringify(updatedData, null, 2));
+};
+
 (async () => {
   const browser = await puppeteer.launch({
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -39,9 +56,7 @@ const getRandomUserAgent = () => {
   await page.setViewport({ width: 1366, height: 768 });
 
   try {
-    const jobDetailsArray = []; // Initialize an array to store all job details
-
-    for (let pageIdx = 1; pageIdx <= 40; pageIdx++) {
+    for (let pageIdx = 240; pageIdx <= 400; pageIdx++) {
       const url = `https://www.naukri.com/jobs-in-india-${pageIdx}?k=jobs&qproductJobSource=2&naukriCampus=true&experience=0&nignbevent_src=jobsearchDeskGNB`;
 
       // Set a random user-agent for each request
@@ -56,11 +71,9 @@ const getRandomUserAgent = () => {
       // Extracting job details from the current page
       const currentPageJobDetails = await page.evaluate(() => {
         const jobElements = document.querySelectorAll('.srp-jobtuple-wrapper');
-
         const detailsArray = [];
 
         jobElements.forEach(jobElement => {
-          // Safely extract each detail using optional chaining and fallback values
           const title = jobElement.querySelector('.title')?.textContent.trim() || 'N/A';
           const company = jobElement.querySelector('.comp-name')?.textContent.trim() || 'N/A';
           const experience = jobElement.querySelector('.expwdth')?.textContent.trim() || 'N/A';
@@ -76,20 +89,16 @@ const getRandomUserAgent = () => {
         return detailsArray;
       });
 
-      // Push job details from the current page into the main jobDetailsArray
-      jobDetailsArray.push(...currentPageJobDetails);
+      // Append job details to the JSON file after scraping each page
+      appendJobData(currentPageJobDetails);
+
+      console.log(`Page ${pageIdx} scraped successfully. Job details appended.`);
 
       // Add a random delay between requests (min: 5s, max: 7s)
       await delay(5000, 7000);
     }
 
-    // Log all job details
-    console.log('All job details:', jobDetailsArray);
-
-    // Write job details to JSON file
-    fs.writeFileSync('naukri_jobs.json', JSON.stringify(jobDetailsArray, null, 2));
-
-    console.log('Job details saved to naukri_jobs.json');
+    console.log('All pages scraped and job details appended.');
 
     // Close the browser after processing all pages
     await browser.close();

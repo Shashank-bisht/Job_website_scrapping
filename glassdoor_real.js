@@ -47,7 +47,7 @@ const fs = require('fs');  // File system module to write data to a file
     console.log('Jobs from the first page:', jobs);
 
     // Number of times you want to click the "Show More Jobs" button
-    const maxClicks = 30;  // You can set this to any number
+    const maxClicks = 200;  // You can set this to any number
     let clickCount = 0;
     let hasNextPage = true;
 
