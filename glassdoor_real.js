@@ -51,8 +51,11 @@ const fs = require('fs');  // File system module to write data to a file
     let clickCount = 0;
     let hasNextPage = true;
 
-    while (clickCount < maxClicks && hasNextPage) {
-        try {
+    // Append initial jobs to JSON file
+    fs.appendFileSync('glassdoor_jobs.json', JSON.stringify(jobs, null, 2) + ",\n", 'utf-8');
+
+    try {
+        while (clickCount < maxClicks && hasNextPage) {
             // Wait for the "Show More Jobs" button to appear
             const loadMoreButton = await page.$('button[data-test="load-more"]');
             if (loadMoreButton) {
@@ -84,24 +87,25 @@ const fs = require('fs');  // File system module to write data to a file
                 jobs = jobs.concat(additionalJobs); // Append new jobs to the existing list
                 clickCount++; // Increment the counter for clicked times
 
+                // Append the new jobs to the JSON file after each click
+                fs.appendFileSync('glassdoor_jobs.json', JSON.stringify(additionalJobs, null, 2) + ",\n", 'utf-8');
+
                 // Check if the "Show More Jobs" button is still visible
                 hasNextPage = await page.$('button[data-test="load-more"]') !== null;
             } else {
                 hasNextPage = false; // No more jobs to load
             }
-        } catch (error) {
-            console.log('Error loading more jobs:', error);
-            hasNextPage = false; // Stop if there's an error (e.g., no more jobs)
         }
+    } catch (error) {
+        console.log('Error loading more jobs:', error);
+    } finally {
+        // Append a closing bracket at the end to properly close the JSON array
+        fs.appendFileSync('glassdoor_jobs.json', ']', 'utf-8');
+        console.log(`All scraped jobs after ${clickCount} clicks.`);
+
+        // Optionally take a screenshot after scraping more jobs
+        await page.screenshot({ path: 'after_loading_more_jobs.png', fullPage: true });
+
+        await browser.close();
     }
-
-    console.log(`All scraped jobs after ${clickCount} clicks:`, jobs);
-
-    // Write the scraped jobs to a JSON file
-    fs.writeFileSync('glassdoor_jobs.json', JSON.stringify(jobs, null, 2), 'utf-8');
-
-    // Optionally take a screenshot after scraping more jobs
-    await page.screenshot({ path: 'after_loading_more_jobs.png', fullPage: true });
-
-    await browser.close();
 })();

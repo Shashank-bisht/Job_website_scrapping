@@ -33,7 +33,7 @@ const scrapeData = async () => {
 
     const data = [];
     try {
-        for (let pageIdx = 2; pageIdx <= 131; pageIdx++) {
+        for (let pageIdx = 2; pageIdx <= 5; pageIdx++) {
             const url = `https://internshala.com/jobs/page-${pageIdx}/`;
 
             // Set a random user-agent for each request
@@ -91,11 +91,18 @@ const scrapeData = async () => {
 
             data.push(...newData);
 
+            // Write to JSON file after each page scrape
+            fs.writeFileSync('Internshala_jobs.json', JSON.stringify(data, null, 2), 'utf-8');
+            console.log(`Page ${pageIdx} scraped and data saved.`);
+
             // Add a random delay between requests (min: 5s, max: 7s)
             await delay(5000, 7000);
         }
     } catch (error) {
         console.error('Error:', error);
+        // Save the data scraped before the error
+        fs.writeFileSync('Internshala_jobs.json', JSON.stringify(data, null, 2), 'utf-8');
+        console.log('Data saved up to the point of the error.');
     } finally {
         await browser.close();
     }
@@ -103,18 +110,12 @@ const scrapeData = async () => {
     return data;
 };
 
-const writeToJSON = (data) => {
-    // Convert the data array to JSON format and write it to a file
-    fs.writeFileSync('Internshala_jobs.json', JSON.stringify(data, null, 2), 'utf-8');
-    console.log('JSON file created successfully');
-};
-
 // Main execution
 (async () => {
     try {
         const data = await scrapeData();
-        writeToJSON(data);  // Write data to a JSON file
+        console.log('Scraping complete!');
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error during scraping:', error);
     }
 })();

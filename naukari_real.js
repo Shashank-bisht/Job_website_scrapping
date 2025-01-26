@@ -30,7 +30,7 @@ const getRandomUserAgent = () => {
 // Function to read existing data from the JSON file
 const readJobData = () => {
   try {
-    const data = fs.readFileSync('naukri_jobs.json');
+    const data = fs.readFileSync('naukari_jobs.json');
     return JSON.parse(data);
   } catch (err) {
     return []; // If the file does not exist or there's an error, return an empty array
@@ -41,7 +41,7 @@ const readJobData = () => {
 const appendJobData = (newData) => {
   const existingData = readJobData();
   const updatedData = [...existingData, ...newData];
-  fs.writeFileSync('naukri_jobs.json', JSON.stringify(updatedData, null, 2));
+  fs.writeFileSync('naukari_jobs.json', JSON.stringify(updatedData, null, 2));
 };
 
 (async () => {
@@ -56,7 +56,7 @@ const appendJobData = (newData) => {
   await page.setViewport({ width: 1366, height: 768 });
 
   try {
-    for (let pageIdx = 240; pageIdx <= 400; pageIdx++) {
+    for (let pageIdx = 240; pageIdx <= 245; pageIdx++) {
       const url = `https://www.naukri.com/jobs-in-india-${pageIdx}?k=jobs&qproductJobSource=2&naukriCampus=true&experience=0&nignbevent_src=jobsearchDeskGNB`;
 
       // Set a random user-agent for each request
@@ -104,6 +104,14 @@ const appendJobData = (newData) => {
     await browser.close();
   } catch (error) {
     console.error('Error:', error);
+
+    // Ensure any jobs scraped before the error are saved to the file
+    const currentData = readJobData();
+    fs.writeFileSync('naukari_jobs.json', JSON.stringify(currentData, null, 2));
+
+    console.log('Data saved up to the point of the error.');
+
+    // Close the browser in case of error
     await browser.close();
   }
 })();
